@@ -22,6 +22,7 @@ body.is-home {
 /* ---------- Hero: same night gradient as the inner-page banner, video kept ---------- */
 
 .is-home .hero {
+  padding-bottom: clamp(7rem, 10vw, 10rem);
   background:
     radial-gradient(56rem 32rem at 88% -6%, rgba(146, 108, 243, 0.38), transparent 62%),
     radial-gradient(44rem 28rem at -6% 104%, rgba(15, 95, 220, 0.28), transparent 64%),
@@ -135,4 +136,27 @@ body.is-home {
   background:
     radial-gradient(40rem 22rem at 100% 0%, rgba(146, 108, 243, 0.26), transparent 62%),
     var(--home-night);
+}
+
+/* Home banner ridge, matching the inner-page mountain edge. */
+.is-home .hero__ridge {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  z-index: 3;
+  display: block;
+  width: 100%;
+  height: clamp(64px, 9vw, 128px);
+  pointer-events: none;
+}
+.is-home .hero__ridge-fill {
+  fill: var(--home-paper);
+}
+.is-home .hero__ridge-line {
+  fill: none;
+  stroke: #8bc7fb;
+  stroke-width: 3;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
 }

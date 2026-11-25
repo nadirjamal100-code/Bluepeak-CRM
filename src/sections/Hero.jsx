@@ -18,6 +18,10 @@ export default function Hero() {
       >
         <source src="/media/crm-team.mp4" type="video/mp4" />
       </video>
+      <svg className="hero__ridge" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+        <path className="hero__ridge-fill" d="M0 96 L150 62 L260 90 L430 28 L560 72 L720 18 L890 84 L1050 40 L1190 78 L1320 46 L1440 70 L1440 120 L0 120 Z" />
+        <path className="hero__ridge-line" d="M0 96 L150 62 L260 90 L430 28 L560 72 L720 18 L890 84 L1050 40 L1190 78 L1320 46 L1440 70" pathLength="1" />
+      </svg>
       <div className="container hero__grid">
         <div className="hero__copy">
           <p className="eyebrow eyebrow--dark">BluePeak CRM · sample preview</p>
