@@ -141,7 +141,6 @@ export function TestimonialOverview() {
 }
 
 export default function ClientTestimonials() {
-  const [isPaused, setIsPaused] = useState(false)
 
   return (
     <section className="testimonials" aria-labelledby="testimonials-title">
@@ -154,17 +153,9 @@ export default function ClientTestimonials() {
               title="Better conversations start with shared context."
               intro="Sample stories show how connected customer details and next steps can support team workflows."
             />
-            <button
-              className="testimonials__toggle"
-              type="button"
-              aria-pressed={isPaused}
-              onClick={() => setIsPaused((paused) => !paused)}
-            >
-              {isPaused ? 'Resume autoplay' : 'Pause autoplay'}
-            </button>
           </div>
           <div className="testimonials__viewport" role="region" aria-label="Illustrative testimonials">
-            <div className={`testimonials__track${isPaused ? ' is-paused' : ''}`}>
+            <div className="testimonials__track">
               <TestimonialCards />
               <TestimonialCards decorative />
             </div>
