@@ -1,0 +1,7 @@
+node_modules
+dist
+.DS_Store
+public/images/*.png
+public/images/*.webp
+public/images/*.svg
+!public/images/.gitkeep

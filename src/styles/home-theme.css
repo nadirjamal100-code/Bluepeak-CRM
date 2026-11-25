@@ -1,0 +1,138 @@
+/* ==========================================================================
+   Home page theme — follows the inner-page colour combination (ip- pages).
+   Everything is scoped to `body.is-home` (toggled by pages/Home.jsx), so the
+   inner pages, header, footer and the shared CTA band are not affected.
+   The presence map keeps its original colours.
+
+   Inner-page palette:
+     night     #150a31   night-2  #261459   deep blue  #17348f
+     lilac glow rgba(146,108,243,.38)        blue glow  rgba(15,95,220,.28)
+     paper     #f8f6fd   text #1c1633        muted #4f4968
+     accent    #6901ac   accent-soft #f1e6fa   line rgba(28,22,51,.14)
+   ========================================================================== */
+
+body.is-home {
+  --home-navy: #171b4d;
+  --home-night: linear-gradient(160deg, #150a31 0%, #261459 58%, #17348f 130%);
+  --gradient-banner: var(--home-night);
+  --home-paper: #f8f6fd;
+  background: var(--home-paper);
+}
+
+/* ---------- Hero: same night gradient as the inner-page banner, video kept ---------- */
+
+.is-home .hero {
+  background:
+    radial-gradient(56rem 32rem at 88% -6%, rgba(146, 108, 243, 0.38), transparent 62%),
+    radial-gradient(44rem 28rem at -6% 104%, rgba(15, 95, 220, 0.28), transparent 64%),
+    var(--home-night);
+}
+.is-home .hero::before {
+  background:
+    radial-gradient(56rem 32rem at 88% -6%, rgba(146, 108, 243, 0.3), transparent 62%),
+    linear-gradient(160deg, rgba(21, 10, 49, 0.82) 0%, rgba(38, 20, 89, 0.74) 58%, rgba(23, 52, 143, 0.7) 130%);
+}
+/* Contour rings, like the inner-page banner. */
+.is-home .hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-radial-gradient(
+    ellipse 70% 90% at 80% 42%,
+    transparent 0 62px,
+    rgba(255, 255, 255, 0.07) 63px 64px
+  );
+}
+
+/* ---------- Light sections ---------- */
+
+.is-home .mission-section {
+  background: #fff;
+}
+.is-home section[aria-labelledby='presence-title'] {
+  background: var(--home-paper);
+}
+
+.is-home .mission-section .eyebrow,
+.is-home section[aria-labelledby='presence-title'] .eyebrow,
+.is-home .testimonials .section-heading .eyebrow,
+.is-home .testimonials__metrics-eyebrow,
+.is-home .prose__label {
+  color: #6901ac;
+}
+.is-home .mission-section .section-heading__intro,
+.is-home section[aria-labelledby='presence-title'] .section-heading__intro,
+.is-home .testimonials .section-heading__intro,
+.is-home .prose p,
+.is-home .testimonials__organizations-heading p {
+  color: #4f4968;
+}
+
+.is-home .chip {
+  border-color: rgba(28, 22, 51, 0.14);
+  background: #fff;
+  color: #1c1633;
+}
+.is-home .chip--accent {
+  border-color: transparent;
+  background: #f1e6fa;
+  color: #6901ac;
+}
+
+/* ---------- Cards ---------- */
+
+.is-home .card {
+  border-color: rgba(28, 22, 51, 0.14);
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(21, 10, 49, 0.06);
+}
+.is-home .card:hover {
+  border-color: rgba(105, 1, 172, 0.4);
+  box-shadow: 0 16px 34px rgba(21, 10, 49, 0.14);
+}
+.is-home .card__icon {
+  background: #f1e6fa;
+  color: #6901ac;
+}
+.is-home .card__tag {
+  color: #6901ac;
+}
+.is-home .card__text {
+  color: #4f4968;
+}
+
+/* ---------- Testimonials ---------- */
+
+.is-home .testimonials__stats li {
+  border-color: rgba(28, 22, 51, 0.14);
+  background: #fff;
+  box-shadow: 0 8px 22px rgba(21, 10, 49, 0.05);
+}
+.is-home .testimonials__stats strong {
+  color: #1c1633;
+}
+.is-home .testimonials__stats-label {
+  color: #4f4968;
+}
+.is-home .testimonials__card {
+  background:
+    radial-gradient(19rem 15rem at 100% 0%, rgba(146, 108, 243, 0.38), transparent 74%),
+    linear-gradient(160deg, #150a31 0%, #261459 58%, #17348f 130%);
+}
+
+/* ---------- Dark bands: products, CRM highlights, assistant, industries ---------- */
+
+.is-home .products-section {
+  background: var(--home-navy);
+}
+.is-home .crm-highlights {
+  background: var(--home-navy);
+}
+.is-home #industries.industries-section,
+.is-home .feature {
+  background:
+    radial-gradient(40rem 22rem at 100% 0%, rgba(146, 108, 243, 0.26), transparent 62%),
+    var(--home-night);
+}

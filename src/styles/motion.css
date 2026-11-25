@@ -1,0 +1,196 @@
+/* ==========================================================================
+   BluePeak — site-wide motion. Loaded last.
+   Everything animated is inside `prefers-reduced-motion: no-preference`,
+   except the layout of the split headline words and the scroll-progress bar.
+   ========================================================================== */
+
+/* ---------- Scroll progress bar ---------- */
+
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 150;
+  height: 3px;
+  pointer-events: none;
+}
+.scroll-progress span {
+  display: block;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  background: linear-gradient(90deg, #6901ac, #926cf3 55%, #8bc7fb);
+}
+
+/* Headline words (layout only; the entrance is animated below) */
+.ip-word {
+  display: inline-block;
+  overflow: hidden;
+  margin-bottom: -0.14em;
+  padding-bottom: 0.14em;
+  vertical-align: bottom;
+}
+.ip-word > span {
+  display: inline-block;
+}
+
+@media print {
+  [data-m] {
+    opacity: 1 !important;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  @keyframes motion-rise {
+    from { opacity: 0; transform: translateY(24px); }
+  }
+  @keyframes motion-slide {
+    from { opacity: 0; transform: translateX(-24px); }
+  }
+  @keyframes motion-aside {
+    from { opacity: 0; transform: translateX(32px) scale(0.98); }
+  }
+  @keyframes motion-climb {
+    from { opacity: 0; clip-path: inset(100% 0 0 0); }
+  }
+  @keyframes motion-pop {
+    0% { transform: scale(0); }
+    70% { transform: scale(1.35); }
+    100% { transform: scale(1); }
+  }
+  @keyframes motion-word {
+    from { transform: translateY(110%); }
+  }
+  @keyframes motion-drop {
+    from { opacity: 0; transform: translateY(-8px); }
+  }
+  @keyframes motion-page {
+    from { opacity: 0; transform: translateY(12px); }
+  }
+  @keyframes motion-breathe {
+    50% { transform: scale(1.05); }
+  }
+  @keyframes motion-drift {
+    to { transform: translateX(35%); }
+  }
+
+  /* ----- Route change ----- */
+  .page-enter {
+    animation: motion-page 0.5s var(--ease-out) backwards;
+  }
+
+  /* ----- Scroll reveal (driven by MotionManager) ----- */
+  .js-motion [data-m]:not(.is-in) {
+    opacity: 0;
+  }
+  .js-motion [data-m].is-in {
+    animation: motion-rise 0.75s var(--ease-out) backwards;
+    animation-delay: calc(var(--i, 0) * 90ms);
+  }
+  .js-motion .ip-linkrow[data-m].is-in,
+  .js-motion .ip-next__links a[data-m].is-in {
+    animation-name: motion-slide;
+  }
+  /* The staircase climbs: each step is revealed from its base upward. */
+  .js-motion .ip-step[data-m].is-in {
+    animation-name: motion-climb;
+    animation-duration: 1s;
+    animation-delay: calc(var(--i, 0) * 160ms);
+  }
+  /* Trail markers pop in just after their column. */
+  .js-motion .ip-moment[data-m]:not(.is-in)::before {
+    transform: scale(0);
+  }
+  .js-motion .ip-moment[data-m].is-in::before {
+    animation: motion-pop 0.6s var(--ease-out) backwards;
+    animation-delay: calc(var(--i, 0) * 90ms + 350ms);
+  }
+
+  /* ----- Inner page hero: one orchestrated entrance ----- */
+  .ip-word > span {
+    animation: motion-word 0.85s var(--ease-out) backwards;
+    animation-delay: calc(var(--w, 0) * 70ms + 120ms);
+  }
+  .ip-hero__crumbs,
+  .ip-hero__lead,
+  .ip-hero__actions,
+  .ip-hero__note {
+    animation: motion-rise 0.8s var(--ease-out) backwards;
+  }
+  .ip-hero__crumbs { animation-delay: 0.05s; }
+  .ip-hero__lead { animation-delay: 0.45s; }
+  .ip-hero__actions { animation-delay: 0.6s; }
+  .ip-hero__note { animation-delay: 0.75s; }
+  .ip-hero__aside {
+    animation: motion-aside 1s var(--ease-out) 0.3s backwards;
+  }
+  .ip-hero__contours {
+    transform-origin: 78% 40%;
+    animation: motion-breathe 18s ease-in-out infinite;
+  }
+
+  /* ----- Buttons: light sweep on hover ----- */
+  .btn--primary,
+  .btn--light {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn--primary::after,
+  .btn--light::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.4) 50%, transparent 70%);
+    transform: translateX(-120%);
+    pointer-events: none;
+  }
+  .btn--light::after {
+    background: linear-gradient(110deg, transparent 30%, rgba(146, 108, 243, 0.32) 50%, transparent 70%);
+  }
+  .btn--primary:hover::after,
+  .btn--light:hover::after {
+    transform: translateX(120%);
+    transition: transform 0.7s var(--ease-out);
+  }
+
+  /* ----- Small hovers ----- */
+  .card__icon {
+    transition: transform 0.35s var(--ease-out);
+  }
+  .card:hover .card__icon {
+    transform: scale(1.1) rotate(-5deg);
+  }
+  .chip {
+    transition: transform 0.2s var(--ease-out), border-color 0.2s;
+  }
+  .chip:hover {
+    transform: translateY(-2px);
+  }
+
+  /* ----- FAQ answers ease open ----- */
+  .accordion__panel:not([hidden]) {
+    animation: motion-drop 0.35s var(--ease-out);
+  }
+
+  /* ----- Call-to-action band: a slow drifting highlight ----- */
+  .cta {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: -40% -20%;
+    z-index: -1;
+    background: radial-gradient(40rem 18rem at 30% 50%, rgba(255, 255, 255, 0.14), transparent 60%);
+    animation: motion-drift 12s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+  .cta__inner {
+    position: relative;
+  }
+}
