@@ -755,3 +755,9 @@
 .blog-article__related-grid h3 { margin:.6rem 0 1rem; color:#171b2e; font-size:1.2rem; }
 .blog-article__related-grid b { color:#1767ee; font-size:.95rem; }
 @media (max-width:700px) { .blog-article__layout { grid-template-columns:1fr; gap:1.5rem; } .blog-article__meta { flex-flow:row wrap; gap:.5rem 1rem; } .blog-article__related-grid { grid-template-columns:1fr; } }
+
+.coming-soon-spacer {
+  min-height: 500px;
+  background: #FFFFFF;
+}
+

@@ -4,7 +4,7 @@ import Logo from './Logo'
 import Navigation from './Navigation'
 import Button from './Button'
 import { MenuIcon, CloseIcon } from './Icons'
-import { navItems, DEMO_HREF } from '../data/site'
+import { navItems } from '../data/site'
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -40,7 +40,7 @@ export default function Header() {
         <Logo />
         <div id="site-menu" className="header__panel">
           <Navigation items={navItems} onNavigate={() => setMenuOpen(false)} />
-          <Button href={DEMO_HREF} className="header__cta">
+          <Button to="/coming-soon" className="header__cta">
             CRM preview
           </Button>
         </div>

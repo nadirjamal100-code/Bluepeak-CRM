@@ -8,6 +8,7 @@ import Blog from './pages/Blog'
 const About = lazy(() => import('./pages/About'))
 const FAQ = lazy(() => import('./pages/FAQ'))
 const ContactPage = lazy(() => import('./pages/ContactPage'))
+const ComingSoon = lazy(() => import('./pages/ComingSoon'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const TopicPage = lazy(() => import('./pages/TopicPage'))
 const BlogArticle = lazy(() => import('./pages/BlogArticle'))
@@ -21,6 +22,7 @@ export default function App() {
           <Route path="about" element={<About />} />
           <Route path="faq" element={<FAQ />} />
           <Route path="contact" element={<ContactPage />} />
+          <Route path="coming-soon" element={<ComingSoon />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="platform/:slug" element={<TopicPage section="platform" />} />
