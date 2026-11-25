@@ -7,7 +7,7 @@ import ClientTestimonials, { TestimonialOverview } from '../sections/ClientTesti
 import Mission from '../sections/Mission'
 import Products from '../sections/Products'
 import CRMHighlights from '../sections/CRMHighlights'
-import RYaBot from '../sections/RYaBot'
+import CRMAssistant from '../sections/CRMAssistant'
 import Industries from '../sections/Industries'
 import Presence from '../sections/Presence'
 import CTASection from '../components/CTASection'
@@ -33,7 +33,7 @@ export default function Home() {
       <Mission />
       <Products />
       <CRMHighlights />
-      <RYaBot />
+      <CRMAssistant />
       <Industries />
       <Presence />
       <ClientTestimonials />

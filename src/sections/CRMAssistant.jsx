@@ -3,9 +3,9 @@ import Button from '../components/Button'
 import { Bot } from '../components/Icons'
 import { DEMO_HREF } from '../data/site'
 
-export default function RYaBot() {
+export default function CRMAssistant() {
   return (
-    <section id="ryabot" className="section" aria-labelledby="ryabot-title">
+    <section id="crm-assistant" className="section" aria-labelledby="crm-assistant-title">
       <div className="container">
         <Reveal className="feature">
           <div className="feature__icon">
@@ -13,7 +13,7 @@ export default function RYaBot() {
           </div>
           <div className="feature__body">
             <p className="eyebrow">CRM assistant concept</p>
-            <h2 id="ryabot-title">Turn customer context into a useful next step.</h2>
+            <h2 id="crm-assistant-title">Turn customer context into a useful next step.</h2>
             <p>
               This illustrative concept summarizes a customer conversation and drafts a follow-up task. It is sample
               content, not a live assistant or a claim about an available AI feature.
